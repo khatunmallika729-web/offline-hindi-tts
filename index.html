@@ -2,9 +2,7 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#087f5b">
 
 <link rel="manifest" href="manifest.webmanifest">
@@ -13,177 +11,152 @@
 
 <style>
 *{
-    box-sizing:border-box;
+  box-sizing:border-box;
 }
 
 body{
-    margin:0;
-    background:#f3faf7;
-    color:#17342b;
-    font-family:
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
+  margin:0;
+  background:#f3faf7;
+  color:#17342b;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 
 .container{
-    max-width:760px;
-    margin:auto;
-    padding:14px;
+  max-width:720px;
+  margin:auto;
+  padding:20px;
 }
 
 .header{
-    background:#087f5b;
-    color:white;
-    border-radius:20px;
-    padding:20px;
-    margin-bottom:14px;
+  background:#087f5b;
+  color:white;
+  border-radius:28px;
+  padding:25px 22px;
+  margin-bottom:22px;
 }
 
 .header h1{
-    margin:0 0 7px;
-    font-size:25px;
+  margin:0;
+  font-size:30px;
 }
 
 .header p{
-    margin:0;
-    font-size:14px;
-    line-height:1.5;
+  margin:12px 0 0;
+  font-size:17px;
 }
 
 .card{
-    background:white;
-    border-radius:20px;
-    padding:16px;
-    margin-bottom:14px;
-    box-shadow:0 4px 18px rgba(0,0,0,.07);
+  background:white;
+  border-radius:28px;
+  padding:24px;
+  box-shadow:0 5px 25px rgba(0,0,0,.06);
 }
 
 label{
-    display:block;
-    font-size:15px;
-    font-weight:700;
-    margin:10px 0 7px;
-}
-
-select,
-textarea,
-button{
-    width:100%;
-    font-family:inherit;
-    font-size:16px;
-    border-radius:13px;
+  display:block;
+  font-size:20px;
+  font-weight:700;
+  margin:0 0 10px;
 }
 
 select,
 textarea{
-    border:1px solid #cbdad4;
-    background:white;
-    padding:13px;
-}
-
-select{
-    min-height:52px;
+  width:100%;
+  border:1px solid #c8d8d3;
+  border-radius:20px;
+  padding:17px;
+  font-size:18px;
+  outline:none;
+  background:white;
 }
 
 textarea{
-    min-height:190px;
-    resize:vertical;
-    line-height:1.6;
+  min-height:270px;
+  resize:vertical;
+  line-height:1.55;
 }
 
-.buttons{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-    margin-top:12px;
+.group{
+  margin-bottom:22px;
 }
 
 button{
-    border:none;
-    padding:14px;
-    font-weight:800;
-    cursor:pointer;
+  width:100%;
+  border:0;
+  border-radius:20px;
+  padding:17px;
+  font-size:20px;
+  font-weight:700;
+  cursor:pointer;
+  margin-top:10px;
 }
 
 .download{
-    background:#e1f2ec;
-    color:#075c43;
+  background:#e0f3ed;
+  color:#09684e;
 }
 
 .generate{
-    background:#087f5b;
-    color:white;
-}
-
-.install{
-    background:#e9f1ee;
-    color:#075c43;
-}
-
-.save{
-    background:#e9f1ee;
-    color:#075c43;
+  background:#087f5b;
+  color:white;
 }
 
 button:disabled{
-    opacity:.55;
+  opacity:.55;
 }
 
 .status{
-    margin-top:13px;
-    font-size:14px;
-    line-height:1.5;
+  margin-top:18px;
+  font-size:16px;
+  line-height:1.5;
 }
 
 .progress{
-    width:100%;
-    height:8px;
-    background:#e3eee9;
-    border-radius:10px;
-    overflow:hidden;
-    margin-top:8px;
+  width:100%;
+  height:10px;
+  background:#e1eee9;
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:10px;
 }
 
-.progress-bar{
-    width:0%;
-    height:100%;
-    background:#087f5b;
-    transition:width:.2s;
+.progressBar{
+  height:100%;
+  width:0%;
+  background:#087f5b;
+  transition:.2s;
 }
 
 audio{
-    width:100%;
-    margin-top:14px;
-}
-
-.small{
-    font-size:13px;
-    line-height:1.65;
-    color:#61736d;
+  width:100%;
+  margin-top:18px;
 }
 
 .info{
-    background:#f4faf7;
-    border-radius:13px;
-    padding:12px;
-    margin-top:12px;
-    font-size:13px;
-    line-height:1.6;
+  margin-top:22px;
+  background:white;
+  border-radius:25px;
+  padding:22px;
 }
 
-@media(max-width:520px){
+.info h2{
+  margin-top:0;
+}
 
-    .buttons{
-        grid-template-columns:1fr;
-    }
+.small{
+  font-size:15px;
+  color:#58736a;
+  line-height:1.6;
+}
 
-    .header h1{
-        font-size:23px;
-    }
+.ok{
+  color:#087f5b;
+  font-weight:700;
+}
 
+.error{
+  color:#c62828;
+  font-weight:700;
 }
 </style>
 </head>
@@ -192,143 +165,76 @@ audio{
 
 <div class="container">
 
-    <div class="header">
+  <div class="header">
+    <h1>🎙️ Offline Hindi TTS</h1>
+    <p>
+      একবার Voice Model download করুন →
+      তারপর Internet ছাড়াই ব্যবহার করুন
+    </p>
+  </div>
 
-        <h1>🎙️ Offline Hindi TTS</h1>
+  <div class="card">
 
-        <p>
-            প্রথমবার Internet দিয়ে voice model download করুন।
-            এরপর model ফোনে সংরক্ষিত থাকলে Internet ছাড়াই Hindi voice তৈরি করা যাবে।
-        </p>
+    <div class="group">
+      <label>Hindi Voice</label>
 
+      <select id="voice">
+        <option value="hi_IN-pratham-medium">
+          Pratham — Hindi Male
+        </option>
+      </select>
     </div>
 
+    <div class="group">
+      <label>Text</label>
 
-    <div class="card">
-
-        <label for="voice">
-            Hindi Voice
-        </label>
-
-        <select id="voice">
-
-            <option value="hi_IN-pratham-medium">
-                Pratham — Hindi
-            </option>
-
-            <option value="hi_IN-priyamvada-medium">
-                Priyamvada — Hindi
-            </option>
-
-            <option value="hi_IN-rohan-medium">
-                Rohan — Hindi
-            </option>
-
-        </select>
-
-
-        <label for="text">
-            Text
-        </label>
-
-        <textarea id="text">नमस्ते! यह एक ऑफलाइन हिंदी टेक्स्ट टू स्पीच टेस्ट है। आप पहली बार इंटरनेट से आवाज़ का मॉडल डाउनलोड करने के बाद इसे बिना इंटरनेट के चला सकते हैं।</textarea>
-
-
-        <div class="buttons">
-
-            <button
-                class="download"
-                id="downloadBtn">
-                ⬇️ Download Voice
-            </button>
-
-
-            <button
-                class="generate"
-                id="generateBtn">
-                🔊 Generate
-            </button>
-
-        </div>
-
-
-        <div
-            class="status"
-            id="status">
-            TTS system loading...
-        </div>
-
-
-        <div class="progress">
-
-            <div
-                class="progress-bar"
-                id="progressBar">
-            </div>
-
-        </div>
-
-
-        <audio
-            id="audio"
-            controls>
-        </audio>
-
-
-        <div class="buttons">
-
-            <button
-                class="save"
-                id="saveBtn"
-                style="display:none;">
-                💾 Save WAV
-            </button>
-
-
-            <button
-                class="install"
-                id="installBtn"
-                style="display:none;">
-                📱 Install App
-            </button>
-
-        </div>
-
+      <textarea id="text">नमस्ते! यह एक ऑफलाइन हिंदी टेक्स्ट टू स्पीच टेस्ट है। आप पहली बार इंटरनेट से आवाज़ का मॉडल डाउनलोड करने के बाद इसे बिना इंटरनेट के चला सकते हैं।</textarea>
     </div>
 
+    <button
+      id="downloadBtn"
+      class="download"
+      onclick="downloadVoice()">
+      ↓ Download Voice
+    </button>
 
-    <div class="card">
+    <button
+      id="generateBtn"
+      class="generate"
+      onclick="generateSpeech()">
+      🔊 Generate
+    </button>
 
-        <b>📱 Offline ব্যবহারের নিয়ম</b>
-
-        <div class="small">
-
-            1. Internet ON করুন।<br>
-
-            2. Hindi Voice নির্বাচন করুন।<br>
-
-            3. <b>Download Voice</b> চাপুন।<br>
-
-            4. Download সম্পূর্ণ হওয়া পর্যন্ত অপেক্ষা করুন।<br>
-
-            5. একটি text দিয়ে <b>Generate</b> করে পরীক্ষা করুন।<br>
-
-            6. Browser থেকে <b>Add to Home Screen</b> করুন।<br>
-
-            7. এরপর Internet OFF করে আবার Generate পরীক্ষা করুন।
-
-        </div>
-
-
-        <div class="info">
-
-            ℹ️ Voice model browser-এর local storage/OPFS-এ
-            সংরক্ষিত হবে। Browser data clear করলে model আবার
-            download করতে হতে পারে।
-
-        </div>
-
+    <div id="status" class="status">
+      Status: Checking voice model...
     </div>
+
+    <div class="progress">
+      <div id="progressBar" class="progressBar"></div>
+    </div>
+
+    <audio id="audio" controls></audio>
+
+  </div>
+
+  <div class="info">
+
+    <h2>Offline ব্যবহারের নিয়ম</h2>
+
+    <p class="small">
+      1) Internet ON করুন<br>
+      2) Download Voice চাপুন<br>
+      3) Model download শেষ হওয়া পর্যন্ত অপেক্ষা করুন<br>
+      4) Generate চাপুন<br>
+      5) একবার model save হয়ে গেলে Internet OFF করে আবার Generate করতে পারবেন
+    </p>
+
+    <p class="small">
+      প্রথমবার model download হতে কিছু সময় লাগতে পারে।
+      Model browser storage-এ cache করা হবে।
+    </p>
+
+  </div>
 
 </div>
 
@@ -336,512 +242,301 @@ audio{
 <script type="module">
 
 /*
-    Piper TTS Web
-    Browser neural TTS
+  Piper TTS Web
+  Browser-based Piper inference.
 */
 
 import * as tts
-from "https://esm.sh/@jtsage/piper-tts-web@1.2.0";
+  from "https://esm.sh/@jtsage/piper-tts-web@1.2.0";
 
 
-/* -------------------------
-   Elements
-------------------------- */
-
-const voiceSelect =
-    document.getElementById("voice");
-
-const textBox =
-    document.getElementById("text");
-
-const downloadBtn =
-    document.getElementById("downloadBtn");
-
-const generateBtn =
-    document.getElementById("generateBtn");
-
-const saveBtn =
-    document.getElementById("saveBtn");
-
-const installBtn =
-    document.getElementById("installBtn");
+const VOICE = "hi_IN-pratham-medium";
 
 const statusBox =
-    document.getElementById("status");
+  document.getElementById("status");
 
 const progressBar =
-    document.getElementById("progressBar");
+  document.getElementById("progressBar");
+
+const downloadButton =
+  document.getElementById("downloadBtn");
+
+const generateButton =
+  document.getElementById("generateBtn");
 
 const audio =
-    document.getElementById("audio");
+  document.getElementById("audio");
+
+const textBox =
+  document.getElementById("text");
 
 
-let audioURL = null;
+function status(message, type=""){
 
-let deferredInstallPrompt = null;
+  statusBox.className =
+    "status " + type;
 
-
-/* -------------------------
-   Status
-------------------------- */
-
-function setStatus(message){
-
-    statusBox.textContent = message;
+  statusBox.textContent =
+    message;
 
 }
 
 
-/* -------------------------
-   Progress
-------------------------- */
+function progress(value){
 
-function setProgress(value){
+  value =
+    Math.max(0, Math.min(100, value));
 
-    if(isNaN(value)){
-        value = 0;
+  progressBar.style.width =
+    value + "%";
+
+}
+
+
+/*
+  Check whether Pratham is already
+  stored in browser OPFS.
+*/
+async function checkStored(){
+
+  try{
+
+    const stored =
+      await tts.stored();
+
+    console.log(
+      "Stored Piper voices:",
+      stored
+    );
+
+    if(
+      Array.isArray(stored) &&
+      stored.includes(VOICE)
+    ){
+
+      status(
+        "✓ Pratham voice model already downloaded.",
+        "ok"
+      );
+
+      downloadButton.textContent =
+        "✓ Voice Downloaded";
+
+      downloadButton.disabled =
+        false;
+
+      return true;
     }
 
-    value =
-        Math.max(
-            0,
-            Math.min(
-                100,
-                value
-            )
-        );
+    status(
+      "Voice model not downloaded yet."
+    );
 
-    progressBar.style.width =
-        value + "%";
+    return false;
 
+  }catch(error){
+
+    console.error(error);
+
+    status(
+      "Model status check failed: " +
+      error.message,
+      "error"
+    );
+
+    return false;
+  }
 }
 
 
-/* -------------------------
-   Check downloaded model
-------------------------- */
+/*
+  Download the Hindi model.
+*/
+window.downloadVoice = async function(){
 
-async function checkModel(){
+  downloadButton.disabled =
+    true;
+
+  generateButton.disabled =
+    true;
+
+  progress(0);
+
+  status(
+    "Downloading Hindi voice model..."
+  );
+
+  try{
+
+    await tts.download(
+      VOICE,
+      (info) => {
+
+        console.log(
+          "Download:",
+          info
+        );
+
+        if(
+          info &&
+          info.total
+        ){
+
+          const percent =
+            Math.round(
+              (info.loaded /
+               info.total) * 100
+            );
+
+          progress(percent);
+
+          status(
+            "Downloading voice model... " +
+            percent + "%"
+          );
+        }
+
+      }
+    );
+
+    progress(100);
+
+    status(
+      "✓ Hindi voice downloaded and saved. এখন Generate চাপুন।",
+      "ok"
+    );
+
+    downloadButton.textContent =
+      "✓ Voice Downloaded";
+
+  }catch(error){
+
+    console.error(error);
+
+    status(
+      "Download error: " +
+      error.message,
+      "error"
+    );
+
+  }finally{
+
+    downloadButton.disabled =
+      false;
+
+    generateButton.disabled =
+      false;
+  }
+
+};
+
+
+/*
+  Generate speech.
+*/
+window.generateSpeech = async function(){
+
+  const text =
+    textBox.value.trim();
+
+  if(!text){
+
+    status(
+      "আগে কিছু Hindi text লিখুন।",
+      "error"
+    );
+
+    return;
+  }
+
+  generateButton.disabled =
+    true;
+
+  downloadButton.disabled =
+    true;
+
+  progress(0);
+
+  status(
+    "Generating Hindi speech..."
+  );
+
+  try{
+
+    /*
+      predict() automatically uses
+      the cached model if already downloaded.
+    */
+
+    const wav =
+      await tts.predict(
+        {
+          text:text,
+          voiceId:VOICE
+        },
+        (info) => {
+
+          console.log(
+            "TTS progress:",
+            info
+          );
+
+        }
+      );
+
+    const url =
+      URL.createObjectURL(wav);
+
+    audio.src =
+      url;
+
+    audio.load();
+
+    status(
+      "✓ Hindi speech তৈরি হয়েছে।",
+      "ok"
+    );
+
+    /*
+      Automatically start playback.
+      Some mobile browsers may require
+      the user to press Play.
+    */
 
     try{
-
-        if(
-            typeof tts.stored !==
-            "function"
-        ){
-
-            setStatus(
-                "TTS library load হয়েছে, কিন্তু stored API পাওয়া যাচ্ছে না। Page reload করুন।"
-            );
-
-            return;
-
-        }
-
-
-        const storedModels =
-            await tts.stored();
-
-
-        const currentVoice =
-            voiceSelect.value;
-
-
-        if(
-            Array.isArray(storedModels) &&
-            storedModels.includes(currentVoice)
-        ){
-
-            setStatus(
-                "✅ এই voice model আগে থেকেই downloaded। Offline Ready."
-            );
-
-        }else{
-
-            setStatus(
-                "ℹ️ এই voice model এখনও download করা হয়নি।"
-            );
-
-        }
-
-    }catch(error){
-
-        console.error(error);
-
-        setStatus(
-            "Model status check error: " +
-            error.message
-        );
-
+      await audio.play();
+    }catch(e){
+      console.log(
+        "Autoplay blocked by browser."
+      );
     }
 
-}
+  }catch(error){
 
+    console.error(error);
 
-/* -------------------------
-   Voice change
-------------------------- */
+    status(
+      "Generate error: " +
+      error.message,
+      "error"
+    );
 
-voiceSelect.addEventListener(
-    "change",
-    checkModel
-);
+  }finally{
 
+    generateButton.disabled =
+      false;
 
-/* -------------------------
-   Download Voice
-------------------------- */
+    downloadButton.disabled =
+      false;
+  }
 
-downloadBtn.addEventListener(
-    "click",
-    async function(){
+};
 
-        try{
 
-            const voiceId =
-                voiceSelect.value;
-
-
-            if(
-                typeof tts.download !==
-                "function"
-            ){
-
-                throw new Error(
-                    "Download API পাওয়া যাচ্ছে না।"
-                );
-
-            }
-
-
-            downloadBtn.disabled =
-                true;
-
-            generateBtn.disabled =
-                true;
-
-
-            setProgress(0);
-
-            setStatus(
-                "⏳ Voice model download হচ্ছে..."
-            );
-
-
-            await tts.download(
-                voiceId,
-                function(progress){
-
-                    let percent = 0;
-
-
-                    if(
-                        progress &&
-                        progress.total
-                    ){
-
-                        percent =
-                            (
-                                progress.loaded /
-                                progress.total
-                            ) * 100;
-
-                    }
-
-
-                    setProgress(
-                        percent
-                    );
-
-
-                    setStatus(
-                        "Downloading " +
-                        Math.round(percent) +
-                        "%..."
-                    );
-
-                }
-            );
-
-
-            setProgress(100);
-
-
-            setStatus(
-                "✅ Voice model download complete!"
-            );
-
-
-            generateBtn.disabled =
-                false;
-
-
-            await checkModel();
-
-
-        }catch(error){
-
-            console.error(error);
-
-
-            setStatus(
-                "❌ Download error: " +
-                error.message
-            );
-
-
-        }finally{
-
-            downloadBtn.disabled =
-                false;
-
-        }
-
-    }
-);
-
-
-/* -------------------------
-   Generate Speech
-------------------------- */
-
-generateBtn.addEventListener(
-    "click",
-    async function(){
-
-        try{
-
-            const text =
-                textBox.value.trim();
-
-
-            if(!text){
-
-                setStatus(
-                    "⚠️ প্রথমে Text লিখুন।"
-                );
-
-                return;
-
-            }
-
-
-            const voiceId =
-                voiceSelect.value;
-
-
-            if(
-                typeof tts.predict !==
-                "function"
-            ){
-
-                throw new Error(
-                    "Predict API পাওয়া যাচ্ছে না।"
-                );
-
-            }
-
-
-            generateBtn.disabled =
-                true;
-
-
-            setStatus(
-                "🔊 Hindi voice তৈরি হচ্ছে..."
-            );
-
-
-            setProgress(10);
-
-
-            const wav =
-                await tts.predict({
-                    text: text,
-                    voiceId: voiceId
-                });
-
-
-            setProgress(100);
-
-
-            if(audioURL){
-
-                URL.revokeObjectURL(
-                    audioURL
-                );
-
-            }
-
-
-            audioURL =
-                URL.createObjectURL(
-                    wav
-                );
-
-
-            audio.src =
-                audioURL;
-
-
-            saveBtn.style.display =
-                "block";
-
-
-            saveBtn.onclick =
-                function(){
-
-                    const link =
-                        document.createElement(
-                            "a"
-                        );
-
-                    link.href =
-                        audioURL;
-
-                    link.download =
-                        "offline-hindi-tts.wav";
-
-                    document.body.appendChild(
-                        link
-                    );
-
-                    link.click();
-
-                    link.remove();
-
-                };
-
-
-            setStatus(
-                "✅ Voice তৈরি হয়েছে।"
-            );
-
-
-            audio.play()
-                .catch(
-                    function(){}
-                );
-
-
-        }catch(error){
-
-            console.error(error);
-
-
-            setStatus(
-                "❌ Generate error: " +
-                error.message
-            );
-
-
-        }finally{
-
-            generateBtn.disabled =
-                false;
-
-        }
-
-    }
-);
-
-
-/* -------------------------
-   PWA Install
-------------------------- */
-
-window.addEventListener(
-    "beforeinstallprompt",
-    function(event){
-
-        event.preventDefault();
-
-        deferredInstallPrompt =
-            event;
-
-        installBtn.style.display =
-            "block";
-
-    }
-);
-
-
-installBtn.addEventListener(
-    "click",
-    async function(){
-
-        if(
-            !deferredInstallPrompt
-        ){
-
-            return;
-
-        }
-
-
-        deferredInstallPrompt
-            .prompt();
-
-
-        await deferredInstallPrompt
-            .userChoice;
-
-
-        deferredInstallPrompt =
-            null;
-
-
-        installBtn.style.display =
-            "none";
-
-    }
-);
-
-
-/* -------------------------
-   Service Worker
-------------------------- */
-
-if(
-    "serviceWorker" in navigator
-){
-
-    navigator.serviceWorker
-        .register(
-            "./sw.js"
-        )
-        .then(
-            function(){
-
-                console.log(
-                    "Service Worker registered"
-                );
-
-            }
-        )
-        .catch(
-            function(error){
-
-                console.log(
-                    "Service Worker error",
-                    error
-                );
-
-            }
-        );
-
-}
-
-
-/* -------------------------
-   Start
-------------------------- */
-
-setStatus(
-    "TTS system ready. Model status checking..."
-);
-
-
-checkModel();
+/*
+  Initial check.
+*/
+checkStored();
 
 </script>
 
