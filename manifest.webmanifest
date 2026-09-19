@@ -1,0 +1,9 @@
+{
+  "name":"Offline Hindi TTS",
+  "short_name":"Hindi TTS",
+  "start_url":"./",
+  "display":"standalone",
+  "background_color":"#f3faf7",
+  "theme_color":"#087f5b",
+  "lang":"hi-IN"
+}

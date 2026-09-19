@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#087f5b">
+<link rel="manifest" href="manifest.webmanifest">
+<title>Offline Hindi TTS</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f3faf7;color:#163128;font-family:system-ui,-apple-system,Segoe UI,sans-serif}
+.wrap{max-width:760px;margin:auto;padding:14px}.head{background:#087f5b;color:#fff;border-radius:20px;padding:18px;margin-bottom:12px}
+h1{font-size:23px;margin:0 0 5px}.muted{font-size:13px;opacity:.9}.card{background:#fff;border-radius:18px;padding:15px;margin:12px 0;box-shadow:0 3px 16px #00000010}
+label{display:block;font-weight:750;font-size:14px;margin:10px 0 7px}
+select,textarea,button{font:inherit;width:100%;border-radius:12px}select,textarea{border:1px solid #c9d9d2;padding:12px;background:#fff}
+textarea{min-height:180px;resize:vertical}.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}
+button{border:0;padding:13px;font-weight:800}.primary{background:#087f5b;color:white}.secondary{background:#e4f3ed;color:#075c43}
+.status{font-size:13px;margin-top:11px}.bar{height:7px;background:#e3eee9;border-radius:9px;margin-top:8px;overflow:hidden}.bar i{display:block;height:100%;width:0;background:#087f5b}
+audio{width:100%;margin-top:12px}.small{font-size:12px;line-height:1.55;color:#63746e}
+@media(max-width:520px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <h1>🎙️ Offline Hindi TTS</h1>
+    <div class="muted">একবার voice model download করুন → তারপর Internet ছাড়াই ব্যবহার করুন</div>
+  </div>
+
+  <div class="card">
+    <label>Hindi Voice</label>
+    <select id="voice">
+      <option value="hi_IN-pratham-medium">Pratham — Hindi</option>
+      <option value="hi_IN-priyamvada-medium">Priyamvada — Hindi</option>
+      <option value="hi_IN-rohan-medium">Rohan — Hindi</option>
+    </select>
+
+    <label>Text</label>
+    <textarea id="text">नमस्ते! यह एक ऑफलाइन हिंदी टेक्स्ट टू स्पीच टेस्ट है। आप पहली बार इंटरनेट से आवाज़ का मॉडल डाउनलोड करने के बाद इसे बिना इंटरनेट के चला सकते हैं।</textarea>
+
+    <div class="grid">
+      <button class="secondary" id="download">⬇ Download Voice</button>
+      <button class="primary" id="generate">🔊 Generate</button>
+    </div>
+
+    <div class="status" id="status">প্রথমে Voice Model download করুন।</div>
+    <div class="bar"><i id="bar"></i></div>
+    <audio id="player" controls></audio>
+
+    <div class="grid" style="margin-top:10px">
+      <button class="secondary" id="install" style="display:none">📱 Install App</button>
+      <button class="secondary" id="save" style="display:none">💾 Save WAV</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <b>Offline ব্যবহারের নিয়ম</b>
+    <div class="small">
+      1) Internet ON → Voice Model Download<br>
+      2) Download শেষ → একবার Generate করে পরীক্ষা করুন<br>
+      3) Browser menu → Add to Home Screen / Install<br>
+      4) এরপর Internet OFF করেও একই browser-এর এই app থেকে Generate করুন।
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import * as tts from "https://esm.sh/@jtsage/piper-tts-web@1.2.0";
+
+const $=id=>document.getElementById(id);
+const voice=$("voice"), text=$("text"), status=$("status"), bar=$("bar");
+const player=$("player"), save=$("save"), install=$("install");
+let lastURL=null, deferredPrompt=null;
+
+function pct(n){bar.style.width=Math.max(0,Math.min(100,n||0))+"%"}
+async function check(){
+  try{
+    const stored=await tts.stored();
+    status.textContent=stored.includes(voice.value)
+      ?"✓ Model downloaded — Offline Ready"
+      :"Model not downloaded";
+  }catch(e){status.textContent="Status: "+e.message}
+}
+voice.onchange=check;
+
+$("download").onclick=async()=>{
+  try{
+    status.textContent="Voice model download হচ্ছে...";
+    pct(0);
+    await tts.download(voice.value,(p)=>{
+      const n=p?.total ? p.loaded/p.total*100 : 0;
+      pct(n); status.textContent=`Downloading ${Math.round(n)}%`;
+    });
+    pct(100);
+    status.textContent="✓ Download complete — এখন Internet বন্ধ করেও ব্যবহার করা যাবে।";
+  }catch(e){status.textContent="Download error: "+(e?.message||e)}
+};
+
+$("generate").onclick=async()=>{
+  const s=text.value.trim(); if(!s)return;
+  try{
+    status.textContent="Local TTS চলছে...";
+    const wav=await tts.predict({text:s,voiceId:voice.value});
+    if(lastURL)URL.revokeObjectURL(lastURL);
+    lastURL=URL.createObjectURL(wav);
+    player.src=lastURL;
+    $("save").style.display="block";
+    $("save").onclick=()=>{
+      const a=document.createElement("a");
+      a.href=lastURL;a.download="offline-hindi-tts.wav";a.click();
+    };
+    status.textContent="✓ Voice generated locally — Internet লাগেনি।";
+  }catch(e){
+    status.textContent="Generate error: "+(e?.message||e);
+  }
+};
+
+window.addEventListener("beforeinstallprompt",e=>{
+  e.preventDefault();deferredPrompt=e;install.style.display="block";
+});
+install.onclick=async()=>{
+  if(!deferredPrompt)return;
+  deferredPrompt.prompt(); await deferredPrompt.userChoice;
+  deferredPrompt=null;install.style.display="none";
+};
+
+if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(()=>{});
+check();
+</script>
+</body>
+</html>
